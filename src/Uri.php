@@ -22,4 +22,5 @@ interface Uri
     const MEDIA_UPLOAD = 'https://qyapi.weixin.qq.com/cgi-bin/media/upload?access_token=%s&type=%s';
     const MEDIA_GET = 'https://qyapi.weixin.qq.com/cgi-bin/media/get?access_token=%s&media_id=%s';
     const MATERIAL_ADD_MPNEWS = 'https://qyapi.weixin.qq.com/cgi-bin/material/add_mpnews?access_token=%s';
+	const MATERIAL_ADD = 'https://qyapi.weixin.qq.com/cgi-bin/material/add_material?type=%s&access_token=%s';
 }

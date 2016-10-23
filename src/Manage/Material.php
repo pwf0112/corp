@@ -5,12 +5,12 @@ namespace Corp\Manage;
 use Corp\Base;
 use Corp\Manager;
 use Corp\Uri;
+use CurlX\Https;
 
 class Material
 {
-	public static function addMpNews()
+	public static function addMpNews($news)
 	{
-		$news = func_get_args();
 		$item = [];
 		foreach ($news as $new) {
 			$temp['title'] = $new['title'];
@@ -36,5 +36,32 @@ class Material
 		$url = sprintf(Uri::MATERIAL_ADD_MPNEWS, Manager::$token);
 
 		return Base::postHttpsApi($url, $json);
+	}
+
+	public static function addImage($realPath)
+	{
+		return self::addType($realPath, 'image');
+	}
+
+	public static function addVoice($realPath)
+	{
+		return self::addType($realPath, 'voice');
+	}
+
+	public static function addVideo($realPath)
+	{
+		return self::addType($realPath, 'video');
+	}
+
+	public static function addFile($realPath)
+	{
+		return self::addType($realPath, 'file');
+	}
+
+	private static function addType($realPath, $type)
+	{
+		$url = sprintf(Uri::MATERIAL_ADD, $type, Manager::$token);
+
+		return json_decode(Https::file($url, $realPath));
 	}
 }

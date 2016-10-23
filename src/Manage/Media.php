@@ -7,7 +7,7 @@ use CurlX\Https;
 
 class Media
 {
-	public static function upload($realPath, $type)
+	private static function upload($realPath, $type)
 	{
 		$url = sprintf(Uri::MEDIA_UPLOAD, Manager::$token, $type);
 
